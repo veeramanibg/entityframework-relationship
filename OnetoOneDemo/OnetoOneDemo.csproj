@@ -53,12 +53,32 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Migrations\201912181635155_Initial commit.cs" />
+    <Compile Include="Migrations\201912181635155_Initial commit.designer.cs">
+      <DependentUpon>201912181635155_Initial commit.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201912181733214_From onetoone fluent api.cs" />
+    <Compile Include="Migrations\201912181733214_From onetoone fluent api.designer.cs">
+      <DependentUpon>201912181733214_From onetoone fluent api.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Model\Customer.cs" />
+    <Compile Include="Model\CustomerDetails.cs" />
+    <Compile Include="Model\EFTestModel.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201912181635155_Initial commit.resx">
+      <DependentUpon>201912181635155_Initial commit.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201912181733214_From onetoone fluent api.resx">
+      <DependentUpon>201912181733214_From onetoone fluent api.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
