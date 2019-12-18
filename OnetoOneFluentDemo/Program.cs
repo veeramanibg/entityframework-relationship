@@ -29,8 +29,36 @@ namespace OnetoOneFluentDemo
                         }));
                 }
 
-                // Insert();
+                Insert();
                 Console.ReadKey();
+            }
+        }
+
+        public static void Insert()
+        {
+            try
+            {
+                using (var context = new EFTestModelOnetoOneFluent())
+                {
+                    context.Customers.Add(new Customer
+                    {
+                        CustomerID = 4,
+                        FirstName = "Elan ",
+                        LastName = "Pancahcharam"
+                    });
+                    //context.SaveChanges();
+                    context.CustomerDetails.Add(new CustomerDetails
+                    {
+                        CustomerID = 4,
+                        Email = "Elan4@gmail.com",
+                        Address = "Puthukottai"
+                    });
+                    context.SaveChanges();
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
             }
         }
     }
