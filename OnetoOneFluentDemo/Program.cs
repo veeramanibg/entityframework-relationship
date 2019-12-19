@@ -40,16 +40,16 @@ namespace OnetoOneFluentDemo
             {
                 using (var context = new EFTestModelOnetoOneFluent())
                 {
-                    context.Customers.Add(new Customer
+                   context.Customers.Add(new Customer
                     {
-                        CustomerID = 4,
+                        CustomerID = 6,
                         FirstName = "Elan ",
                         LastName = "Pancahcharam"
                     });
                     //context.SaveChanges();
                     context.CustomerDetails.Add(new CustomerDetails
                     {
-                        CustomerID = 4,
+                        CustomerID = 6,
                         Email = "Elan4@gmail.com",
                         Address = "Puthukottai"
                     });
