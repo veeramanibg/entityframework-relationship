@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace OnetoManyDemo.Model
+namespace OnetoManyFluentDemo.Model
 {
     public partial class EFTestModel : DbContext
     {
@@ -20,6 +20,7 @@ namespace OnetoManyDemo.Model
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
 
+            modelBuilder.Entity<CustomerDetails>().HasKey(cd=>cd.ContactID).HasRequired<Customer>(s => s.Customer).WithMany(s => s.CustomerDetails).HasForeignKey(s => s.CustomerID);
         }
     }
 }

@@ -7,20 +7,20 @@ using System.Threading.Tasks;
 
 namespace OnetoOneDemo.Model
 {
-    public partial class EFTestModel:DbContext
+    public partial class EFTestModel : DbContext
     {
-        public EFTestModel():base("name=DefaultConnection")
+        public EFTestModel() : base("name=DefaultConnection")
         {
 
         }
 
-        public virtual DbSet<Customer>Customers { get; set; }
+        public virtual DbSet<Customer> Customers { get; set; }
 
         public virtual DbSet<CustomerDetails> CustomerDetails { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
-            
+
         }
     }
 }

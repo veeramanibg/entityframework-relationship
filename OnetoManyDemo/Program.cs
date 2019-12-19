@@ -21,22 +21,22 @@ namespace OnetoManyDemo
                         {
                         item.FirstName,item.LastName
                         }));
-                    foreach(var cusdetails in item.CustomerDetails)
+                    foreach (var cusdetails in item.CustomerDetails)
                     {
                         Console.WriteLine("    Customer Contacts   :" + string.Join(" ", new object[]
                         {
                        cusdetails.Email, cusdetails.Address
                         }));
                     }
-                    
-                    
+
+
                 }
 
                 // Insert();
                 Console.ReadKey();
             }
             //Insert();
-            
+
         }
         public static void Insert()
         {
@@ -44,27 +44,33 @@ namespace OnetoManyDemo
             {
                 using (var context = new EFTestModel())
                 {
-                    try
-                    {
-                        context.Customers.Add(new Customer
-                        {
 
-                            FirstName = "Latha ",
-                            LastName = "Aamu"
-                        });
-                        context.SaveChanges();
-                        context.CustomerDetails.Add(new CustomerDetails
-                        {
-                            CustomerID = 11,
-                            Email = "latha22@gmail.com",
-                            Address = "Aamu"
-                        });
-                        context.SaveChanges();
-                    }
-                    catch(Exception ex)
+                    using (var dbcontextTransaction = context.Database.BeginTransaction())
                     {
-                        context.Database.CurrentTransaction.Rollback();
+                        try
+                        {
+                            context.Customers.Add(new Customer
+                            {
+
+                                FirstName = "Latha ",
+                                LastName = "Aamu"
+                            });
+                            context.SaveChanges();
+                            context.CustomerDetails.Add(new CustomerDetails
+                            {
+                                CustomerID = 10,
+                                Email = "latha22@gmail.com",
+                                Address = "Aamu"
+                            });
+                            context.SaveChanges();
+                            dbcontextTransaction.Commit();
+                        }
+                        catch (Exception ex)
+                        {
+                            dbcontextTransaction.Rollback();
+                        }
                     }
+
                 }
             }
             catch (Exception ex)

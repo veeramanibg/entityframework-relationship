@@ -6,18 +6,16 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace OnetoManyDemo.Model
+namespace OnetoManyFluentDemo.Model
 {
     [Table("CustomerDetails")]
     public partial class CustomerDetails
     {
-        [Key]
-        [Column(Order = 1)]
+        
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int ContactID { get; set; }
 
-        [Key, ForeignKey("Customer")]
-        [Column(Order = 2)]
+        
         public int CustomerID { get; set; }
 
         [StringLength(255)]
